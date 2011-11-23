@@ -9,6 +9,10 @@ set number
 set ruler
 syntax on
 
+" Custom stuff
+let mapleader = ","
+set hidden
+
 " Set encoding
 set encoding=utf-8
 
@@ -41,6 +45,7 @@ set noequalalways
 " NERDTree configuration
 let NERDTreeIgnore=['\.pyc$', '\.rbc$', '\~$']
 map <Leader>n :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 " Command-T configuration
 let g:CommandTMaxHeight=20
