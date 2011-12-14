@@ -12,6 +12,7 @@ syntax on
 " Custom stuff
 let mapleader = ","
 set hidden
+set noeol
 
 " Set encoding
 set encoding=utf-8
