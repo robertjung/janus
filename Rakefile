@@ -162,9 +162,15 @@ vim_plugin_task "gundo",            "git://github.com/sjl/gundo.vim.git"
 #  sh "gem install github-markup redcarpet"
 #end
 
+def command? command
+  system("which #{ command} > /dev/null 2>&1")
+end
+
 vim_plugin_task "command_t",        "http://s3.wincent.com/command-t/releases/command-t-1.2.1.vba" do
   Dir.chdir "ruby/command-t" do
-    if File.exists?("/usr/bin/ruby1.8") # prefer 1.8 on *.deb systems
+    if command?("rbfu") || command?("rbenv") # try to use default ruby
+      sh "ruby extconf.rb"
+    elsif File.exists?("/usr/bin/ruby1.8") # prefer 1.8 on *.deb systems
       sh "/usr/bin/ruby1.8 extconf.rb"
     elsif File.exists?("/usr/bin/ruby") # prefer system rubies
       sh "/usr/bin/ruby extconf.rb"
